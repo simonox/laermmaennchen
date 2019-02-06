@@ -7,6 +7,7 @@ int volume; // this roughly goes from 0 to 700
 
 void setup() 
 {
+    pinMode(LED_BUILTIN, OUTPUT);
     Serial.begin(9600); 
     resetValues();
 }
@@ -26,6 +27,11 @@ void loop()
         volume = maxValue - minValue;
 
         Serial.println(volume);
+        if (volume > 10) {
+          digitalWrite(LED_BUILTIN, HIGH);
+        } else {
+          digitalWrite(LED_BUILTIN, LOW);
+        }
 
         resetValues();
     }
